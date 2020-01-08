@@ -1,4 +1,5 @@
 <?php
- require('routeur.php');
 
- $routeur = new Route();
+require('routeur.php');
+
+$routeur = new Route();

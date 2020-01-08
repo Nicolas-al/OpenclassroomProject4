@@ -1,48 +1,55 @@
 <?php
 
 require('model/CommentManager.php');
-require('model/PostManager.php');
+require_once('model/PostManager.php');
 
 
 
 class MainController
 { 
+ 
+    public function getPosts()
+    {
+        $postManager = New PostManager();
+        $getPosts = $postManager->getList();
 
-public function accueil()
-{
-
-}    
-
-public function addComments($postId, $author, $content)
-{
-    $commentManager = new CommentManager();
-    $newComment = $commentManager->postComment($postId, $author, $content);
-
-    if ($newComment === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
-
-public function getPosts()
- {
-     $postManager = New PostManager();
-     $getPosts = $postManager->getList();
-
-     require('view/frontend/accueil.php'); 
+        require 'view/frontend/accueil.php'; 
     }
 
-public function getPost()
- {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    public function getOnePost()
+    {
+        $postManager = new PostManager();
+        $commentManager = new CommentManager();
 
+        if(!empty($_GET['id'])){
+            $id = intval($_GET['id']);
+            if ($_GET['id'] != NULL)
+            {
+                $post = $postManager->getPost($_GET['id']);
+                if($post)
+                { 
+                    $comments = $commentManager->get($_GET['id']);
+                }
+            } 
+        else {
+            header('Location: index.php');
+            }
+        }
+        require 'view/frontend/postView.php';        
+    }
 
-    require('view/frontend/postView.php'); 
-}
+    public function displayCreateAdmin()
+    {
+        require 'view/frontend/admin.php';
+    } 
+    public function addComment($postId, $author, $comment)
+    {
+        $commentManager = new CommentManager();
+        $newComment = $commentManager->add($postId, $author, $comment);  
+    }
+    public function getComments()
+    {
+        require 'view/frontend/postView.php';
+    }
 
 } 

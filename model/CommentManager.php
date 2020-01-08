@@ -1,29 +1,33 @@
 <?php 
-
+  
 
 require_once('manager.php');
 
 class CommentManager extends Manager
 {
-     public function add($postId, $author, $content)
+     public function add($postId, $author, $comment)
      {
+  
         $db = $this->dbConnect(); 
-        $q = $db->prepare('INSERT INTO comments(post_id, author, content,
-        comment_date) VALUES(:post_id, :author ,:content , NOW())');
-        $q->bindValue(':post_id', $postId);
-        $q->bindValue(':author', $author);
-        $q->bindValue(':content', $content);
+        $q = $db->prepare('INSERT INTO comments(post_id, author, comment,
+        comment_date) VALUES( ?, ?, ?, NOW())');
+        $affectedLines = $q->execute(array($postId, $author, $comment));
 
-        $q->execute();
+        return $affectedLines;
+
      }
      public function get($postId)
      {
         $db = $this->dbConnect(); 
-        $q = $db->prepare('SELECT author, content, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') WHERE :post_id FROM comment ORDER BY id DESC');
-        $q->bindValue('post_id', $postId);
-        
-        $q->execute();
-     }
+        $q = $db->prepare('SELECT * FROM comments WHERE post_id = ? ORDER BY id DESC');
+        $q->execute(array($postId));
+  
+ 
+        $comments = $q->fetchAll();
+
+        return $comments;
+
+      }
      public function setDb(PDO $db)
      {
          $this->_db = $db;

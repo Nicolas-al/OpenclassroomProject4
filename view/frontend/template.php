@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <title>Jean Rochefort</title>
-        <link href="style.css" rel="stylesheet" /> 
+        <link type="text/css" rel="stylesheet" href="public/css/style.css" /> 
     </head>
     <header>
-        
+        <?= $header ?>
     </header>
     <body>
         <?= $content ?>

@@ -36,15 +36,10 @@ class PostManager extends Manager
     public function getPost($id)
     {
         $db = $this->dbConnect(); 
-        $q = $db->prepare('SELECT id, author, content, DATE_FORMAT(date, \'%d/%m/%Y à %Hh%imin%ss\') FROM chapter WHERE :id');
-        $q->bindValue('id', $id);
-        $q->execute();
-        //$getPost = $q->fetch();
+        $q = $db->prepare('SELECT * FROM chapter WHERE id = ?');
+        $q->execute(array($id));
+        $getPost = $q->fetch();
+        return $getPost;
+    }
 
-        return $q;
-    }
-    public function setDb(PDO $db)
-    {
-         $this->_db = $db;
-    }
 }
