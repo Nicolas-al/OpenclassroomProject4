@@ -1,18 +1,226 @@
 
-header{
-    display: flex;
+body{
+    background: #c3cae830;
+    margin: auto;
 }
 
-body{
-    background: rgb(169, 169, 233);
+footer{
+    border-top: 1px solid grey;
+    margin-top: 10%;
+    color: grey;
+}
+footer p {
+    text-align: center;
 }
 
 /*----------------------------------------- Frontend -----------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 
-.form-group {
+/*-----------header-------------*/
+#header_front{ 
+display: -webkit-box; 
+display: flex;
+background-color: rgba(255, 255, 255, 0.596);
+height: 150px;
+text-align: center;
+margin-bottom: -7px;
+}
+
+#author_name{
+    margin-left: 41%;
+}
+#connect{
+    padding: 12px 2px;
+    position: absolute;
+    right: 0px;
+}
+#connect a{
+    text-decoration: none;
+    border: 3px solid white;
+    background: #b4bfef;
+    border-radius: 6px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 2px inset rgba(0,0,0,.9);
+    padding: 7px;
+}
+
+/*-------------Sections---------------*/
+
+/* -------------section1------------ */
+.section_intro{
+    border-top: 1px solid black;
+    margin-top: 8px;
     display: flex;
-    flex-direction: column;
+
+}
+#block_intro{
+    padding: 22px 42px 20px 40px;
+}
+#logo{
+    width: 200px;
+    height: 200px;
+    float: left;
+    border: 1px solid;
+    background-color: rgba(0,0,0,.9);
+    shape-outside: circle();
+    margin: 30px;
+    border-radius: 50%;
+}
+#content_intro{
+
+    padding-left: 33px;
+}
+#content_intro p{
+    text-align: justify;
+}
+
+#feather{
+    width: 80px;
+    margin-left: 20px;
+    background-color: bisque;
+    margin-top: 22px;
+    padding: 4px;
+    border-radius: 30px;
+}
+#keyboard{
+    margin-top: -22px;
+    background-color: beige;
+    margin-left: 91px;
+    padding: 4px;
+    border-radius: 31px;
+}
+
+.mini{
+    color: black;
+    width: 71px;
+    text-align: end;
+    height: 81px;
+}
+
+.mini img{
+    height: 44px;
+}
+.mini a{
+    text-decoration: none;
+    color: rgba(0,0,0,.9);
+}
+.mini a p{
+    font-size: 4px;
+}
+.zoom{
+    color: black;
+    width: 312px;
+    position: absolute;
+    background: white;
+    right: 0;
+    height: 331px;
+}
+
+.zoom img{
+    height: 244px;
+}
+
+.zoom p{
+    padding: 5px;
+    margin-top: 0;
+}
+/*------------section2--------------*/
+
+.section_posts{
+    padding-top: 34px;
+}
+#accueil_title
+{
+margin-left: 40%;
+}
+.chapter{
+    border: 2px solid rgba(234, 247, 246, 0.98);
+    background-color: rgb(158, 158, 158);
+    box-shadow: 0px 0px 24px -4px inset #9e9e9ea6;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.block_title{
+    display: flex;
+    padding-left: 36%;
+}
+.block_title_chapter{
+    display: flex;
+    border-bottom: 1px solid;
+}
+.title_chapter{
+    font-family: 'IM Fell Great Primer SC', serif;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.title_chapter h1{
+    margin-left : 30px;
+
+}
+.post_date{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 0.7%;
+}
+.post_date p{
+    font-family: 'Ibarra Real Nova', serif;
+}
+.post_link{
+    font-family: 'Ibarra Real Nova', serif;
+    font-size: 1.3em;
+    padding-top: 2%;
+    padding-right: 6%;
+    padding-left: 6%;
+    background-color: #6b3c2bc7;
+}
+.post_link a{
+    text-decoration: none;
+    color: white;
+}
+.content{
+    font-family: 'IM Fell Great Primer SC', serif;
+    text-align: justify;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+#block_chapter{
+    border-bottom: 1px solid;
+    padding: 3% 10% 7% 10%;
+    width: 457px;
+}
+
+
+/*------------section2---------------*/
+
+#form_section{
+    margin-top: 5%;
+    border-bottom: 1px solid;
+    padding: 0% 10% 3% 10%;    
+}
+#form_section p{
+    font-size: 2em;
+}
+.form-group{
+    margin-bottom: 4%;
+}
+.form-group textarea{
+    height: 150px;
+}
+#login{
+    margin-left: 33%;
+    margin-top: 11px;
+}
+
+.form-group {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
 }
 #form-pseudo {
     width: 200px;
@@ -26,10 +234,420 @@ body{
 /*----------------------------------------- Backend -----------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 
-#create_Admin{
-    margin-left: 72%;
-    margin-top: 11px;
+/*----------header----------*/
+
+#header_block{
+    display: -webkit-box;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.596);
+    height: 100px;
+    padding: 9px 0px 10px 12px;
+}
+.header_left{
+    margin-right: 33%;
+
+}
+#pseudo {
+    margin-left: 3%;
+    margin-right: 46%;
+}
+#pseudo h3 {
+margin-top: 13px;
+}
+
+.block_create_post {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-align: center;
+            align-items: center;
+}
+.block_create_post a {
+    color : black;
+}
+.fa-plus {
+    font-size: 40px;
+}
+.block_btn{
+    margin-left: 28%;
+    right: 10px;
+    position: absolute;
+}
+.disconnect{
+    text-align: end;
+}
+.disconnect img{
+    width: 32px;
+}
+.block_btn_infos{
+    padding-right: 7px;
+    margin-top: 33px;
+}
+.btn_infos{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+.fa-sort-down{
+font-size: 1.6em;
+}
+.btn_infos a{
+    display: none;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px;
+    border: 1px solid grey;
+    color: black;
+    background-color: #ffffffd4;
+    padding: 14px 10px 20px 12px;
 }
 
 
+/*----------Section---------*/
 
+/* page Login Admin */
+
+.login_admin{
+    text-align: center;
+    margin: auto;
+    margin-top: 8%;
+    width: fit-content;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.41);
+}
+.login_admin h1{
+    width: 344px;
+    margin: auto;
+    padding: 11px 12px;
+    background: white;
+    border-radius: 3px 2px;
+    border-radius: 9px 9px 0px 0px;
+    border: 3px solid white;
+}
+.login_admin form{
+    width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 9px 9px;
+    padding: 34px;
+    border: 3px solid white;
+    background-color: #0c279a73;
+}
+.login_admin label{
+    width: 87px;
+}
+.block_mail{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.block_pass{
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-evenly;
+}
+
+.login_admin button{
+    width: 115px;
+    margin: auto;
+    padding: 5px;
+    margin-top: 25px;
+}
+/*  */
+
+#title_book {
+    font-family: 'IM Fell Great Primer SC', serif;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 20px;
+}
+#chapters_list {
+    margin-top: 60px;
+    margin-left: 90px;
+    margin-bottom: 70px;
+    column-count: 2;
+}
+.delete_msg{
+    display: none;
+    border: 1px solid;
+    box-shadow: 0px 0px 6px;
+    width: fit-content;
+    color: white;
+    background-color: rgb(207, 19, 19);
+    padding: 4px 20px;
+}
+.block_chapter{
+    display: flex;
+    margin-bottom: 20px;
+    padding: 5px 18px;
+}
+.title_post{
+    margin-right : 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.title_post a {
+    color: black;
+    text-decoration: underline;
+    font-size: 20px;
+    text-underline-position: under;
+    margin-left: 20px;
+    width: 118px;
+}
+.title_post p{
+    margin: auto;
+    width: 76px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn_modify{
+    margin-right: 30px;
+
+}
+
+#write_post{
+    margin: 5% 15%;
+}
+.block_content {
+    margin-top: 4%;
+}
+#delete_post{
+    width: fit-content;
+    margin-inline-start: auto;
+    background: white;
+    padding: 6px 26px;
+    box-shadow: 0px 0px 2px;
+    margin-top: 5%;
+}
+#block_comments {
+    margin-top: 65px;
+    margin-top: 15px;
+    text-align: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+}
+.block_comment {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+.comment {
+    border: 2px solid black;
+    width: 60%;
+    margin-bottom: 23px;
+    margin-left: 110px;
+}
+.r_infos{
+    display: -webkit-box;
+    display: flex;
+    background-color: #deb88787;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+}
+.author_comment{
+    margin: auto;
+    margin-top: 9px;
+}
+.nb_reports{
+    margin-top: 0px;
+    border-radius: 3px;
+    width: 40px;
+    margin-bottom: auto;
+    background-color: #c50d0d73;
+}
+.r_content{
+    padding: 1px;
+    background-color: #ffffffb8;
+}
+.icon_delete{
+  margin-left: 28px;  
+  display: -webkit-box;  
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.icon_delete{
+    display: block;
+}
+
+.icon_delete img:hover, .icon_delete img:focus{
+opacity: 0.4;       
+}
+.icon_delete span{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -13px;
+    color: #ffff;
+    font-size: 16px;
+    background: rgba(0,0,0,.9);
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+    -webkit-transform: scale(0) rotate(-12deg);
+            transform: scale(0) rotate(-12deg);
+    -webkit-transition: all .25s;
+    transition: all .25s;
+    opacity: 0;
+}
+.icon_delete:hover span, .icon_delete:focus span{
+    -webkit-transform:scale(1) rotate(0);
+            transform:scale(1) rotate(0);    
+    opacity:1;
+    
+
+}
+.delete{
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-top: 2px;
+    background-color: #d01313;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 74px;
+    height: 17px;
+}
+.delete p {
+    margin-top: auto;
+}
+.fa-backspace {
+    color : #d01313;
+
+}
+
+
+/* ---------------- infos persos ----------------- */
+
+
+.block_infos{
+    padding-left: 100px;
+}
+.infos_mdp{
+    margin-top: 50px;
+}
+.infos{
+    display: flex;
+    margin-bottom: 40px;
+}
+.infos a{
+    margin-left: 19%;
+    margin-top: 10%;
+    height: fit-content;
+
+}
+.display_infos{
+    width: 300px;
+    height: 235px;
+    display: flex;
+    flex-direction: column;
+}
+.display_infos p:first-child{
+    margin-top: 16%;
+}
+/* modifier infos */
+
+.btn_display_infos{
+    height: fit-content;
+    margin: auto;
+    padding : 5px 8px;
+}
+#block_set_infos{
+    z-index: 200;
+    position: fixed;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.set_infos{
+    background-color: #b4bfef;
+    color: black;  
+    border: 3px solid hsla(0, 6%, 97%, 0.9);
+    padding: 10px 32px 30px 32px;
+    width: fit-content;
+    box-shadow: 0px 0px 10px black;
+}
+.form_group{
+    display: flex;
+    margin-top: 13px;
+}
+.label_form{
+    width: 133px;
+}
+#btn_infosP{
+    padding: 5px 8px;
+    width: -webkit-fill-available;
+    margin-top: 24px;
+}
+input{
+    border : 1px solid #8686e4ed
+}
+#msg_errors_infos{
+    display: none;
+    background-color: #ffff;
+    margin-bottom: 5%;
+    padding: 3% 9%;
+    font-size: 18px;
+    color: #880909;   
+}
+/* modifier mot de passe */
+
+.btn_display_password{
+    padding: 5px 8px;
+    height: fit-content;
+    margin: auto;
+}
+.background_modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    background-color: black;
+    opacity: 0.7;
+    display: none;
+}
+#block_set_password{
+    z-index: 200;
+    position: fixed;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.set_password{
+    background-color: #b4bfef;
+    color: black;  
+    border: 3px solid hsla(0, 6%, 97%, 0.9);
+    padding: 10px 32px 30px 32px;
+    width: fit-content;
+    box-shadow: 0px 0px 10px black;
+}
+.set_password .label_form{
+    width: 219px;
+}
+#btn_password{
+    padding: 5px 8px;
+    width: -webkit-fill-available;
+    margin-top: 24px;
+}
+
+#msg_errors_password{
+    display: none;
+    background-color: #ffff;
+    margin-bottom: 5%;
+    padding: 3% 9%;
+    font-size: 18px;
+    color: #880909;
+   
+}

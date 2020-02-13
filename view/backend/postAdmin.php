@@ -1,34 +1,43 @@
-<?php  ob_start(); ?>
-<?php $data = $getAdmin->fetch();
+<?php $data = $getData->fetch();
+?>
+<?php  ob_start(); 
+echo $data['name'] . '&nbsp' . $data['first_name'];
+$adminName = ob_get_clean();
 ?>
 
-<aside id="pseudo">
-    <h3><?= $data['name'] . '&nbsp' . $data['first_name'] ?></h3>
-</aside>    
-<section id="create_Admin">
-    <a href="index.php?action=accueil"><button id="btnDisconect" > Déconnexion </button></a>
-</section>
+<?php ob_start(); ?>
 
-<?php
+<div class="home_return">
+    <a href="index.php?action=homeAdmin&id=<?= $data['id']?>"><img src="public/icons8-retour-arrière-52.png" /></a>
+</div>
 
-$header = ob_get_clean();
-?>
-
+<?php $homeReturn = ob_get_clean(); ?>
 
 <?php  ob_start(); ?>
-
-<section id="writePost">
-    <form>
-        <label for="title"> Titre :</label><br />
-        <input type="text" name="title" id="title" value="<?= $post['title'] ?>"/><br />
-        <label for="content"> Contenu :</label><br />
-        <textarea id="content" name="content" id="content" rows="9" cols="150" ><?= $post['content'] ?></textarea><br />
-
-    </form>    
+<hr>
+<section id="write_post">
+    <form method="post" action="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=true';} else{ echo 'savePost&id=' . $_GET['id'] . '&posted=true';} ?>">
+        <div class="block_title">
+            <label for="title"> Titre :</label><br />
+            <input type="text" name="title" id="title" value="<?php if (isset($post['title'])){ echo $post['title']; } else { echo "";} ?>"/><br />
+        </div>
+        <div class="block_content">
+            <label for="tiny_text_area"> Contenu :</label><br />
+            <textarea name="tiny_text_area" id="tiny_text_area" rows="9" cols="50" ><?php if (isset($post['content'])){ echo $post['content']; } else { echo "";} ?></textarea><br />
+        </div>
+        <input type="submit" name="add_post" value="publier"/>
+        <input type="submit" formaction="index.php?action=savePost&id=<?= $_GET['id'] ?>&posted=false" value="dépublier"/>
+        <input type="submit"  formaction="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=false';} else{echo 'savePost&id=' . $_GET['id'] . '&posted=' . $post['posted'];} ?>" value="enregistrer"/> 
+    </form>
+    <div id="delete_post">
+        <a href="index.php?action=deletePost&id=<?= $post['id']?>"><span>Supprimer</span></a>
+    </div>
+       
 </section>
+
 
 <?php
 
 $content = ob_get_clean();
 
-require('view/frontend/template.php');
+require('view/backend/template.php');

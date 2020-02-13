@@ -17,11 +17,21 @@ class AdminManager extends Manager
 
         return $q;
     }
-    public function update($pseudo, $mail, $password)
+    public function getAdmin($id)
+    {
+        $db = $this->dbConnect(); 
+        $q = $db->prepare('SELECT * FROM admin WHERE id = ?');
+        $q->execute(array($id));
+        $getAdmin = $q->fetch();
+        
+        return $getAdmin;
+    }
+
+    public function update($name, $firstName, $mail, $password, $id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE admin SET pseudo = ? , mail = ?, password = ?');
-        $req->execute(array($pseudo, $mail, $password));
+        $req = $db->prepare('UPDATE admin SET name = ? , first_name = ?, mail = ?, password = ? WHERE id = ?');
+        $req->execute(array($name, $firstName, $mail, $password, $id));
 
         return $req;
     }

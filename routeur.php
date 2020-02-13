@@ -26,7 +26,10 @@ class Route
                         $page = new MainController();
                         if (isset($_GET['id']) && $_GET['id'] > 0){
                             if (isset($_POST['form-pseudo']) && isset($_POST['form-comment'])){ 
+                                echo 'salut';
                             $page->addComment($_GET['id'] ,$_POST['form-pseudo'], $_POST['form-comment']);
+                            echo 'salut';
+
                             };
                         };
                     break;
@@ -40,7 +43,10 @@ class Route
                         { 
                             if ($_POST['new_password'] == $_POST['confirmPass'])
                             {
-                                $pass = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+                                $options = [
+                                'cost' => 12,
+                                ];  
+                                $pass = password_hash($_POST['new_password'], PASSWORD_BCRYPT, $options);
                                 $adCtrl->addAdmin($_POST['name'], $_POST['firstName'],  $_POST['mail'], $_POST['new_pseudo'], $pass);
                             }
                             else {
@@ -54,16 +60,75 @@ class Route
                     case 'loginAdmin':
                         $adCtrl = new AdminController();
                         $adCtrl->displayLoginAdmin();
-                    break;    
+                    break;
+                    case 'disconnect':
+                        $adCtrl = new AdminController();
+                        $adCtrl->disconnect();
+                    break;
                     case 'homeAdmin':
                         $adCtrl = new AdminController();
-                        $adCtrl->homeAdmin();
-                            
+                        $adCtrl->homeAdmin(); 
                     break;
                     case 'postAdmin':
                         $adCtrl = new AdminController();
                         $adCtrl->getOnePost();
-                    break;    
+                    break;
+                    case 'postAdminView':
+                        $adCtrl = new AdminController();
+                        $adCtrl->getOnePost();
+                    break;  
+                    case 'addPost':
+                        $adCtrl = new AdminController();
+                        if (isset($_POST['title']) && isset($_POST['tiny_text_area']))
+                        {
+                        $adCtrl->addPost($_POST['title'], htmlspecialchars_decode($_POST['tiny_text_area']));
+                        }  
+                    break;
+                    case 'savePost': 
+                        $adCtrl = new AdminController();
+                        if (isset($_POST['title']) && isset($_POST['tiny_text_area']) && isset($_GET['id']) && isset($_GET['posted']))
+                        {
+                        $adCtrl->savePost($_POST['title'], $_POST['tiny_text_area'], $_GET['id']);
+                        }
+                      
+                    break;
+                    case 'report':
+                        $page = new MainController();
+                        $adCtrl = new AdminController();
+                        $reports =  $_GET['nb_reports'];
+                        if(!empty($_GET['comment_id'])){
+
+                            $id = intval($_GET['comment_id']);
+                            if ($_GET['comment_id'] != NULL)
+                            {
+                                $reports++;
+                                $page->updateComment($reports ,$_GET['comment_id']);
+                                $page->addReport($_GET['post_id'] ,$_GET['comment_id'], 'Robin', 'haineux');
+                           }
+                        else{
+                                header('Location: index.php');
+                            };
+                        }
+                        else {
+                            echo 'zut';
+                        }
+                    break;
+                    case 'deleteComment':
+                        $adCtrl = new AdminController();
+                        $adCtrl->deleteComment($_GET['comment_id']);
+                    break;
+                    case 'deletePost':
+                        $adCtrl = new AdminController();
+                        $adCtrl->deletePost($_GET['id']);
+                    break;
+                    case 'infosAdmin':
+                        $adCtrl = new AdminController();
+                        $adCtrl->displayInfos();
+                    break;
+                    case 'setAdmin':
+                        $adCtrl = new AdminController();
+                        $adCtrl->update();
+                    break;
                     default:
                     echo 'introuvable';
                 }

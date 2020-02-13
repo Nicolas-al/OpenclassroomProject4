@@ -1,0 +1,3 @@
+{
+    password : <?= $data['password'] ?>
+}

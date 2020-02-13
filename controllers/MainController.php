@@ -1,8 +1,8 @@
 <?php
 
-require('model/CommentManager.php');
+require_once('model/CommentManager.php');
 require_once('model/PostManager.php');
-
+require_once('model/ReportingManager.php');
 
 
 class MainController
@@ -11,8 +11,7 @@ class MainController
     public function getPosts()
     {
         $postManager = New PostManager();
-        $getPosts = $postManager->getList();
-
+        $getPosts = $postManager->getListFront();
         require 'view/frontend/accueil.php'; 
     }
 
@@ -20,7 +19,6 @@ class MainController
     {
         $postManager = new PostManager();
         $commentManager = new CommentManager();
-
         if(!empty($_GET['id'])){
             $id = intval($_GET['id']);
             if ($_GET['id'] != NULL)
@@ -45,7 +43,35 @@ class MainController
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager();
-        $newComment = $commentManager->add($postId, $author, $comment);  
+        echo 'zut';
+        $newComment = $commentManager->add($postId, $author, $comment);
+        echo 'zut';
+
+        if ($newComment === false) {
+            throw new Exception('Impossible de s\'inscrire !');
+        } else {  
+        header('Location: index.php?action=postView&id=' . $postId);
+        }    
+    }
+    public function addReport($postId, $commentId, $pseudoId, $reason)
+    { 
+        $reportingManager = new ReportingManager();
+        $newReport = $reportingManager->add($postId, $commentId, $pseudoId, $reason);
+
+        if ($newReport === false) {
+
+            throw new Exception('Impossible de signaler le commentaire !');
+        } else {  
+
+        header('Location: index.php?action=postView&id=' . $postId);
+        }  
+        
+    }
+    public function updateComment($nbReports, $id)
+    {
+        $commentManager = new CommentManager();
+        $updateNbReports = $commentManager->update($nbReports, $id);
+
     }
     public function getComments()
     {
