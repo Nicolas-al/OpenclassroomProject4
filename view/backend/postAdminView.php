@@ -7,7 +7,7 @@ $adminName = ob_get_clean();
 <?php ob_start(); ?>
 
 <div class="home_return">
-    <a href="index.php?action=homeAdmin&id=<?= $data['id']?>"><img src="public/icons8-retour-arrière-52.png" /></a>
+    <a href="index.php?action=homeAdmin&id=<?= $data['id']?>"><i class="fas fa-undo"></i></a>
 </div>
 
 <?php $homeReturn = ob_get_clean(); ?>
@@ -15,11 +15,9 @@ $adminName = ob_get_clean();
 <?php  ob_start(); ?>
 <section>
 <div id="post_block">
-    <div>
     <h1><?= $post['title'] ?> 
     </h1>
-    <p class="content"><?= $post['content']?></p>
-     </div>
+    <?= $post['content']?>    
 </div>
 <div id="form_block">
     <form action="index.php?action=addComment&amp;id=<?= $post['id'];?>" method="POST"> 

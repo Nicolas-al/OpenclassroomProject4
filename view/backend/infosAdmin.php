@@ -7,7 +7,7 @@ $adminName = ob_get_clean();
 <?php ob_start(); ?>
 
 <div class="home_return">
-    <a href="index.php?action=homeAdmin&id=<?= $data['id']?>"><img src="public/icons8-retour-arrière-52.png" /></a>
+    <a href="index.php?action=homeAdmin&id=<?= $data['id']?>"><i class="fas fa-undo"></i></a>
 </div>
 
 <?php $homeReturn = ob_get_clean(); ?>
@@ -26,20 +26,23 @@ $adminName = ob_get_clean();
             <a href="#set_infos"><button class="btn_display_infos"> Modifer mes informations</button></a>
             <div class="background_modal"></div>
             <div id="block_set_infos">
-                <div id="msg_errors_infos"></div>
+                <div id="msg_errors_infos">
+                    
+                </div>
                 <div class="set_infos" id="set_infos">
                         <h2> Modifier informations</h2>
                         <div class="form_group">
                             <label for="set_name" class="label_form">Nouveau Nom : </label><br />
-                            <input type="text" name="set_name" id="set_name" required /><br />
+                            <input type="text" name="set_name" id="set_name"  /><br />
                         </div> 
                         <div class="form_group">   
                             <label for="set_firstName" class="label_form">Nouveau Prénom : </label><br />
-                            <input type="text" name="set_firstName" id="set_firstName" required /><br />
+                            <input type="text" name="set_firstName" id="set_firstName" /><br />
+                            <p></p>
                         </div>
                         <div class="form_group">
                             <label for="set_mail" class="label_form">Nouveau mail : </label><br />
-                            <input type="email" id="set_mail" name="set_mail" required/><br /> 
+                            <input type="email" id="set_mail" name="set_mail" /><br /> 
                         </div>                      
                         <button id="btn_infosP">Valider</button>
                 </div>

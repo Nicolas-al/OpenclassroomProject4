@@ -1,0 +1,21 @@
+#tiny_text_area{
+    line-height: 1.7;
+}
+div.tox-tinymce{
+    width: 100%;
+    margin-top: 25px;
+    
+
+}
+div.tox-tinymce .tox-menubar {
+    background-color: #185d8c;
+}
+.tox-menubar button.tox-mbtn{
+    color: white;
+}
+div.tox-tinymce .tox-toolbar__primary{
+    background-color: rgb(247, 248, 250);
+}
+/* .tinymce{
+    border: 2px solid red;
+} */

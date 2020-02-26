@@ -6,7 +6,7 @@ $adminName = ob_get_clean();
 
 <?php  ob_start(); ?>
     <div class="delete_msg">
-        <p>le chqpitre à bien été supprimé</p>
+        <p>le chapitre à bien été supprimé</p>
     </div>
 <section id="chapters_list"> 
     <?php while ($data = $getPosts->fetch())
@@ -28,17 +28,19 @@ $adminName = ob_get_clean();
 <hr>
 <section id="block_comments">
         <h2>Commentaires Signalés</h2>
-        <?php while ($report = $getReports->fetch())
+        <?php while ($report = $countReports->fetch())
         {
         ?>
-        <div class="block_comment" id="<?= $report['comment_id']?>">  
-            <div class="comment">
-                <div class="r_infos">
-                    <p class="author_comment">posté le <?= $report['date_c']?> par <?= $report['author']?></p>
-                    <p class="nb_reports"> <?= $report['nb_reports']?></p>
-                </div>
-                <div class="r_content">    
-                    <p> <?= $report['comment']?></p>
+        <div class="block_comment" id="<?= $report['post_id']?>">
+            <div class="border_bottom">
+                <div class="comment">
+                    <div class="r_infos">
+                        <p class="author_comment">posté le <?= $report['date_c']?> par <?= $report['author']?></p>
+                        <p class="nb_reports"> <?= $report['nb_reports']?></p>
+                    </div>
+                    <div class="r_content">    
+                        <p> <?= $report['comment']?></p>
+                    </div>
                 </div>
             </div> 
             <div class="icon_delete">

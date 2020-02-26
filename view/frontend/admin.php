@@ -1,4 +1,4 @@
-
+<!-- 
 
 <?php ob_start(); ?>
 
@@ -20,6 +20,6 @@
 </form>
 </section>
 <?php
-$sectionOne = ob_get_clean();
+// $sectionOne = ob_get_clean();
 
-require('template.php');
+// require('template.php'); -->

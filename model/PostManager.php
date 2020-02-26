@@ -56,7 +56,7 @@ class PostManager extends Manager
         $q->execute(array($id));
         $getPost = $q->fetch();
         return $getPost;
-    }
+    }    
     public function delete($id){
         $db = $this->dbConnect();
         $q = $db->prepare('DELETE  FROM chapter WHERE id = ?');

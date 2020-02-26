@@ -18,14 +18,13 @@ class CommentManager extends Manager
      public function get($postId)
      {
         $db = $this->dbConnect(); 
-        $q = $db->prepare('SELECT * FROM comments WHERE post_id = ? ORDER BY id DESC');
+        $q = $db->prepare('SELECT post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %H:%i:%s") AS date_c FROM comments WHERE post_id = ? ORDER BY id DESC');
         $q->execute(array($postId));
 
         
         $comments = $q->fetchAll();
 
         return $comments;
-
       }
      public function update($nbReports, $id)
      {

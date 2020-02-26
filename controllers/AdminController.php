@@ -26,22 +26,42 @@ class AdminController {
     }
     public function displayLoginAdmin()
     {
-        require('view/backend/loginAdmin.php');
+        require('view/frontend/loginAdmin.php');
     }
     public function loginAdmin()
     {
         $adminManager = New AdminManager();
         $getData = $adminManager->getData();
-        
         while ($dataAdmin = $getData->fetch())
         { 
-            if (isset($_POST['password']) && password_verify($_POST['password'], $dataAdmin['password']))
-            {
-                $_SESSION['role'] = 'admin';
-                header('Location: index.php?action=homeAdmin&id=' . $dataAdmin['id']);
+            if (isset($_POST['mail']) && isset($_POST['password'])){ 
+                if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL) && $_POST['mail'] == $dataAdmin['mail']){
+                    if(password_verify($_POST['password'], $dataAdmin['password'])){
+                        $_SESSION['role'] = 'admin';
+                        header('Location: index.php?action=homeAdmin&id=' . $dataAdmin['id']);
+                        unset($_SESSION['erreurmail']);
+                        unset($_SESSION['erreurpass']);
+                    }
+                    else
+                    {
+                        $_SESSION['erreurpass'] = "mot de passe incorrect";
+                        header('Location: index.php?action=loginAdmin'); 
+                        var_dump($_POST['password']);
+                    }
+                }          
+                else if(!password_verify($_POST['password'], $dataAdmin['password'])){
+                    $_SESSION['erreurmail'] = "email non valide";
+                    $_SESSION['erreurpass'] = "mot de passe incorrect";
+                    header('Location: index.php?action=loginAdmin');    
+                }
+                else if(password_verify($_POST['password'], $dataAdmin['password'])){
+                    $_SESSION['erreurmail'] = "email non valide";
+                    header('Location: index.php?action=loginAdmin');
+                }
+
             }
-            else {
-                echo 'erreur';
+            else{
+             
             }
         }
         
@@ -56,7 +76,8 @@ class AdminController {
         $postManager = New PostManager();
         $adminManager = New AdminManager();
         $reportingManager = new ReportingManager();
-        $getReports = $reportingManager->get();
+        $commentManager = new CommentManager();
+        $countReports = $reportingManager->count();
         $getPosts = $postManager->getListBack();
         $getData = $adminManager->getData();
         if(!empty($_GET['id'])){
@@ -129,7 +150,6 @@ class AdminController {
     {
         $postManager = New PostManager();
         $post = $postManager->getPost($_GET['id']);      
-        var_dump($post['posted']);
         if (isset($_GET['posted']) && $_GET['posted'] == 'true')
         { 
             $postManager->updateOne($title, $content, $id);
@@ -142,22 +162,17 @@ class AdminController {
         
         header('Location: index.php?action=postAdmin&id=' . $_GET['id'] . '&posted=' . $_GET['posted']);        
     }
-    public function getReports()
-    {
-        $reportingManager = new ReportingManager();
-        $getReports = $reportingManager->get();
-        require 'view/backend/homeAdmin.php';
-    }
-    public function deleteComment($id)
+
+    public function deleteComment()
     {
         $commentManager = new CommentManager();
+        $reportingManager = new ReportingManager();
         $adminManager = New AdminManager();
-        if(!empty($id)){
-
-            $id = intval($id);
-            if ($id != NULL)
+        if(!empty($_GET['comment_id'])){
+            if ($_GET['comment_id'] != NULL)
             {              
-                $deleteComment = $commentManager->delete($id);
+                $commentManager->delete($_GET['comment_id']);
+                $reportingManager->delete($_GET['comment_id']);
                 $getData = $adminManager->getData();                
                 while ($dataAdmin = $getData->fetch())
                 { 
@@ -209,34 +224,48 @@ class AdminController {
         $getData = $adminManager->getData();    
         $data = $getData->fetch();
         // echo $_GET['currentpassword'] . ' ' . $_GET['newpassword'] . ' ' . $_GET['confirmpassword'];
-        if (!empty($_GET['name']) && isset($_GET['firstname']) && isset($_GET['mail'])){
-            $adminManager->update($_GET['name'], $_GET['firstname'], $_GET['mail'], $data['password'], $data['id'] );
-        }
-        if (!empty($_GET['currentpassword']) && !empty($_GET['newpassword']) && !empty($_GET['confirmpassword'])){
-            if ($_GET['currentpassword'] == password_verify($_GET['currentpassword'] ,$data['password'])){
-                if ($_GET['newpassword'] == $_GET['confirmpassword']){ 
-                $options = [
-                    'cost' => 12,
-                    ];  
-                $pass = password_hash($_GET['newpassword'], PASSWORD_BCRYPT, $options);
-                $adminManager->update($data['name'], $data['first_name'], $data['mail'], $pass, $data['id']);
-                echo 'le mot de passe à bien été modifié';
+        // if (empty($_GET['currentpassword']) && empty($_GET['newpassword']) && empty($_GET['confirmpassword'])){
+
+            if (!empty($_GET['name']) && isset($_GET['firstname']) && isset($_GET['mail'])){
+                    if (filter_var($_GET['mail'], FILTER_VALIDATE_EMAIL)){ 
+                    $adminManager->update($_GET['name'], $_GET['firstname'], $_GET['mail'], $data['password'], $data['id'] );
+                    echo 'vos informations ont bien été modifiés';
+                    }
+                    else{
+                    echo 'l\'adresse email est incorrect';
+                    }                            
                 }
-                else{
-                    echo 'le nouveau mot de passe et celui confirmé sont différents';
-                }
+            // else{
+            //     echo 'veuillez remplir tout les champs !';
+            // }       
+        // }
+        // if (empty($_GET['name']) && empty($_GET['firstname']) && empty($_GET['mail'])){
+
+            if (!empty($_GET['currentpassword']) && !empty($_GET['newpassword']) && !empty($_GET['confirmpassword'])){
+
+                    if ($_GET['currentpassword'] == password_verify($_GET['currentpassword'] ,$data['password'])){
+                        if ($_GET['newpassword'] == $_GET['confirmpassword']){ 
+                            $options = [
+                                'cost' => 12,
+                                ];  
+                            $pass = password_hash($_GET['newpassword'], PASSWORD_BCRYPT, $options);
+                            $adminManager->update($data['name'], $data['first_name'], $data['mail'], $pass, $data['id']);
+                            echo 'le mot de passe à bien été modifié';
+                        }
+                        else{
+                            echo 'le nouveau mot de passe et celui confirmé sont différents';
+                        }
+                    }
+                    else{ 
+                        echo 'l\'ancien mot de passe n\'est pas le bon';
+                    }
+                
+        
             }
-            else{ 
-                echo 'l\'ancien mot de passe n\'est pas le bon';
+            else if(empty($_GET['name']) && empty($_GET['firstname']) && empty($_GET['mail'])){
+            echo 'veuillez remplir le ou les champs vides';
             }
-        }
-        else if(!empty($_GET['name']) && isset($_GET['firstname']) && isset($_GET['mail'])){
-            echo 'vos informations ont bien été modifiés';
-        }
-        else{
-            echo 'veuillez remplir tout les champs !';
-        }
-    }
+        // }    
     // public function getPass()
     // {
     //     $adminManager = New AdminManager();
@@ -244,5 +273,5 @@ class AdminController {
     //     $data = $getData->fetch();
     //     require 'public/mdp.php';
 
-    // }
-}
+    }
+    }

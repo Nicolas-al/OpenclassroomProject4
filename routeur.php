@@ -24,35 +24,11 @@ class Route
                     break;
                     case 'addComment':
                         $page = new MainController();
-                        if (isset($_GET['id']) && $_GET['id'] > 0){
-                            if (isset($_POST['form-pseudo']) && isset($_POST['form-comment'])){ 
-                                echo 'salut';
-                            $page->addComment($_GET['id'] ,$_POST['form-pseudo'], $_POST['form-comment']);
-                            echo 'salut';
-
-                            };
-                        };
+                        $page->addComment();
                     break;
                     case 'admin':
                         $page = new MainController();
                         $page->displayCreateAdmin();                        
-                    break;
-                    case 'addAdmin':
-                        $adCtrl = new AdminController();
-                        if (isset($_POST['name']) && isset($_POST['firstName']) && isset($_POST['mail']) && isset($_POST['new_pseudo']) && isset($_POST['new_password']) && isset($_POST['confirmPass']));
-                        { 
-                            if ($_POST['new_password'] == $_POST['confirmPass'])
-                            {
-                                $options = [
-                                'cost' => 12,
-                                ];  
-                                $pass = password_hash($_POST['new_password'], PASSWORD_BCRYPT, $options);
-                                $adCtrl->addAdmin($_POST['name'], $_POST['firstName'],  $_POST['mail'], $_POST['new_pseudo'], $pass);
-                            }
-                            else {
-                                header('Location: index.php?action=admin');
-                            }
-                        };   
                     break;
                     case 'adminConnect':
                         $adCtrl = new AdminController();
@@ -94,28 +70,11 @@ class Route
                     break;
                     case 'report':
                         $page = new MainController();
-                        $adCtrl = new AdminController();
-                        $reports =  $_GET['nb_reports'];
-                        if(!empty($_GET['comment_id'])){
-
-                            $id = intval($_GET['comment_id']);
-                            if ($_GET['comment_id'] != NULL)
-                            {
-                                $reports++;
-                                $page->updateComment($reports ,$_GET['comment_id']);
-                                $page->addReport($_GET['post_id'] ,$_GET['comment_id'], 'Robin', 'haineux');
-                           }
-                        else{
-                                header('Location: index.php');
-                            };
-                        }
-                        else {
-                            echo 'zut';
-                        }
+                        $page->addReport();                                           
                     break;
                     case 'deleteComment':
                         $adCtrl = new AdminController();
-                        $adCtrl->deleteComment($_GET['comment_id']);
+                        $adCtrl->deleteComment();
                     break;
                     case 'deletePost':
                         $adCtrl = new AdminController();
