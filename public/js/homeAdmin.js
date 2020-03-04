@@ -1,18 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function () {
     // affichage des couleurs du statut des chapitre (en ligne/ non posté)
     var paraTitlePost = $('.post_status');
-    for(var i=0; i<paraTitlePost.length; i++){
-      console.log($(paraTitlePost[i]).html());
-        if ($(paraTitlePost[i]).html() === 'en ligne'){
+    for (var i = 0; i < paraTitlePost.length; i++) {
+        if ($(paraTitlePost[i]).html() === 'en ligne') {
             $(paraTitlePost[i]).css({
-                'background' : '#09a509',
-                'color' : '#fea'
+                'background': '#09a509',
+                'color': '#fea'
             });
-        }
-        else{
+        } else {
             $(paraTitlePost[i]).css({
-                'background' : '#b10606',
-                'color' : 'white'
+                'background': '#b10606',
+                'color': 'white'
             });
         };
     }

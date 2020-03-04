@@ -55,18 +55,12 @@ class Route
                     break;  
                     case 'addPost':
                         $adCtrl = new AdminController();
-                        if (isset($_POST['title']) && isset($_POST['tiny_text_area']))
-                        {
-                        $adCtrl->addPost($_POST['title'], htmlspecialchars_decode($_POST['tiny_text_area']));
-                        }  
+                        $adCtrl->addPost();
+                     
                     break;
                     case 'savePost': 
                         $adCtrl = new AdminController();
-                        if (isset($_POST['title']) && isset($_POST['tiny_text_area']) && isset($_GET['id']) && isset($_GET['posted']))
-                        {
-                        $adCtrl->savePost($_POST['title'], $_POST['tiny_text_area'], $_GET['id']);
-                        }
-                      
+                        $adCtrl->savePost();  
                     break;
                     case 'report':
                         $page = new MainController();

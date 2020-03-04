@@ -11,7 +11,7 @@
 <section id="block_chapter">
     <div class="block_title">
         <div class="icon_iceberg">
-            <img src="public/icons8-iceberg-100.png" />
+            <img src="public/logos/icons8-iceberg-100.png" alt="iceberg"/>
         </div>
          <h1 id="title_book">Billet simple pour Alaska</h1>
     </div>
@@ -29,7 +29,7 @@
 <section id="form_section">
     <p> Laisser un commentaire : </p>
     <div id="form_block">
-        <form action="index.php?action=addComment&amp;id=<?= $post['id'];?>" method="POST">
+        <form action="index.php?action=addComment&amp;id=<?= $post['id'];?>&titlepost=<?= $_GET['titlepost']?>" method="POST">
             <div class="form-group">
                 <label for="form-pseudo" class="text-white">Votre pseudo <span>(en moins de 255
                         caractères)</span></label>
@@ -64,10 +64,9 @@
                     <p class="content_comment"><?= $comment['comment'] ?></p>
                 </div>
             </div>    
-            <div>
-                <a
-                    href="index.php?action=report&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>&authorname=<?= $comment['author']?>"><button
-                    type="button" id="btn_report"> signaler</button></a>
+            <div class="report">
+                <a href="index.php?action=report&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>&authorname=<?= $comment['author']?>&titlepost=<?= $_GET['titlepost']?>"><button
+                    type="button" id="btn_report">! signaler</button></a>
             </div>
         </div>
         <div id="line"></div>

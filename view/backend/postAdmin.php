@@ -25,13 +25,18 @@ $adminName = ob_get_clean();
             <label for="tiny_text_area"> Rédigez le contenu avec l'editeur de texte ci-dessous</label><br />
             <textarea name="tiny_text_area" id="tiny_text_area" rows="9" cols="50" ><?php if (isset($post['content'])){ echo $post['content']; } else { echo "";} ?></textarea><br />
         </div>
-        <input type="submit" name="add_post" value="publier"/>
-        <input type="submit" formaction="index.php?action=savePost&id=<?= $_GET['id'] ?>&posted=false" value="dépublier"/>
-        <input type="submit"  formaction="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=false';} else{echo 'savePost&id=' . $_GET['id'] . '&posted=' . $post['posted'];} ?>" value="enregistrer"/> 
+        <div class="input_bottom">
+            <input type="submit" formaction="index.php?action=deletePost&id=<?= $post['id']?>" value="supprimer"/>
+            <input type="submit"  formaction="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=false';} else{echo 'savePost&id=' . $_GET['id'] . '&posted=' . $post['posted'];} ?>" value="enregistrer"/>
+            <input type="submit" formaction="index.php?action=savePost&id=<?= $_GET['id'] ?>&posted=false" value="dépublier"/>
+            <input type="submit" name="add_post"  id="add_post" value="publier"/>
+
+            <!-- <div id="delete_post">
+                <a href="index.php?action=deletePost&id=<?= $post['id']?>"><span>supprimer</span></a>
+            </div> -->
+        </div> 
     </form>
-    <div id="delete_post">
-        <a href="index.php?action=deletePost&id=<?= $post['id']?>"><span>Supprimer</span></a>
-    </div>
+   
        
 </section>
 

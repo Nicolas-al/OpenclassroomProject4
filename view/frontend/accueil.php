@@ -2,9 +2,9 @@
 <section class="section_intro">
     <div id="block_intro">
         <div id="logo">
-            <img src="public/icons8-plume-avec-encrier-128.png" id="feather" />
+            <img src="public/logos/icons8-plume-avec-encrier-128.png" id="feather" />
             
-            <img src="public/icons8-clavier-80.png" id="keyboard"/>
+            <img src="public/logos/icons8-clavier-80.png" id="keyboard"/>
         </div>  
         <div id="content_intro">
             <h2> De la plume à la machine</h2>
@@ -17,7 +17,7 @@
 <section class="section_posts"> 
     <div class="block_title">
         <div class="icon_iceberg">
-            <img src="public/icons8-iceberg-100.png" />
+            <img src="public/logos/icons8-iceberg-100.png" alt="iceberg"/>
         </div>
         <h1 id="title_book">Billet simple pour Alaska</h1>
     </div>
@@ -36,7 +36,7 @@
                 <p> Posté le <?= $data['date_p']; ?></p>
             </div>
             <div class="post_link">
-                <a href="index.php?action=postView&amp;id=<?= $data['id'] ?>"> voir la suite </a>
+                <a href="index.php?action=postView&amp;id=<?= $data['id'] ?>&titlepost=<?= $data['title'] ?>"> voir la suite </a>
             </div>    
         </div>
         <div class="content">

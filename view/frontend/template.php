@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jean Forteroche</title>
         <link type="text/css" rel="stylesheet" href="public/css/style.css" /> 
+        <link type="text/css" rel="stylesheet" href="public/css/responsive.css" />
         <link href="https://fonts.googleapis.com/css?family=Caveat|Libre+Baskerville|Lobster|Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Caveat|Libre+Baskerville|Lobster&display=swap" rel="stylesheet">
 
@@ -31,7 +33,7 @@
         <div class="block_connect">
             <div id="connect">
                 <a href="index.php?action=loginAdmin">
-                    <img src="public/icons8-connexion-26.png" />
+                    <img src="public/logos/icons8-connexion-26.png" />
                     <p>connexion</p>
                 </a>
             </div>    
