@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Jean Forteroche</title>
         <link type="text/css" rel="stylesheet" href="public/css/style.css" /> 
         <link type="text/css" rel="stylesheet" href="public/css/responsive.css" />

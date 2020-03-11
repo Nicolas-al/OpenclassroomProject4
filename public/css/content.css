@@ -16,6 +16,10 @@ div.tox-tinymce .tox-menubar {
 div.tox-tinymce .tox-toolbar__primary{
     background-color: rgb(247, 248, 250);
 }
-/* .tinymce{
-    border: 2px solid red;
-} */
+
+
+@media screen and (max-width: 514px) {
+    div.tox-tinymce {
+        margin-top: 0;
+    }
+}

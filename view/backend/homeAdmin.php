@@ -26,7 +26,6 @@ $adminName = ob_get_clean();
     }
     ?>
 </section>
-<hr>
 <section id="block_comments">
         <h2>Commentaires Signalés</h2>
         <?php while($report = $reports->fetch())

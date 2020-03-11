@@ -104,9 +104,8 @@ footer p {
     bottom: 0;
 }
 
-/*-------------Sections---------------*/
+/*------------- accueil ---------------*/
 
-/* -------------section1------------ */
 .section_intro {
     margin-top: 37px;
     display: flex;
@@ -157,48 +156,24 @@ footer p {
     border-radius: 31px;
 }
 
-.mini {
-    color: black;
-    width: 71px;
-    text-align: end;
-    height: 81px;
-}
-
-.mini img {
-    height: 44px;
-}
-
-.mini a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, .9);
-}
-
-.mini a p {
-    font-size: 4px;
-}
-
-.zoom {
-    color: black;
-    width: 312px;
-    position: absolute;
-    background: white;
-    right: 0;
-    height: 331px;
-}
-
-.zoom img {
-    height: 244px;
-}
-
-.zoom p {
-    padding: 5px;
-    margin-top: 0;
-}
-
-/*------------section2--------------*/
-
 .section_posts {
     padding-top: 34px;
+}
+.block_title{
+    display: flex;
+    border-bottom: 2px solid black;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 7px;
+}
+#title_book {
+    font-family: 'IM Fell Great Primer SC', serif;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 20px;
+    color: black;
 }
 
 #accueil_title {
@@ -224,7 +199,6 @@ footer p {
     font-family: 'IM Fell Great Primer SC', serif;
     font-weight: bold;
     margin-bottom: 4%;
-    width: 27%;
 }
 
 .title_chapter h1 {
@@ -268,14 +242,12 @@ footer p {
     padding-right: 3%;
 }
 
+/*---------postView ---------*/
+
 #block_chapter {
     border-bottom: 1px solid;
     padding: 3% 10% 7% 10%;
 }
-
-
-/*------------section2---------------*/
-
 #form_section {
     margin-top: 5%;
     border-bottom: 1px solid;
@@ -319,6 +291,7 @@ footer p {
 }
 
 .button {
+    background: white;
     width: fit-content;
     cursor: pointer;
     border-radius: 2px;
@@ -380,7 +353,6 @@ footer p {
 }
 
 .report {
-    background: black;
     box-shadow: 0px 0px 35px white;
     margin-right: 30px;
     border-radius: 2px;
@@ -389,11 +361,86 @@ footer p {
 .report button {
     color: white;
     font-weight: bold;
+    padding: 4px 7px;
+    border-radius: 3px;
+    background: black;
 }
 
 .line {
     height: 1px;
     background-color: #8c8f9247;
+}
+/* page Login Admin */
+
+#login_admin {
+    width: fit-content;
+    text-align: center;
+    box-shadow: 0px 0px 4px;
+    margin: auto;
+    margin-top: 7%;
+}
+
+#login_admin h1 {
+    margin: auto;
+    padding: 11px 12px;
+    background: white;
+    border-radius: 3px 2px;
+    border-radius: 9px 9px 0px 0px;
+    border: 3px solid white;
+}
+
+#login_admin form {
+    margin: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 9px 9px;
+    padding: 34px;
+    border: 3px solid white;
+    background-color: #185d8b;
+}
+
+#login_admin label {
+    width: 113px;
+    margin-right: 10px;
+
+}
+
+.block_mail {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+
+.block_pass {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    justify-content: space-evenly;
+}
+
+#login_admin button {
+    background: white;
+    width: 115px;
+    margin-left: 40%;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 5px;
+    margin-top: 25px;
+}
+
+#msg_mail {
+    display: none;
+
+}
+
+#msg_pass {
+    display: none;
+}
+
+.input {
+    display: flex;
 }
 
 /*----------------------------------------- Backend -----------------------------------------------*/
@@ -524,85 +571,10 @@ footer p {
     display: none;
 }
 
+/*-------- homeAdmin ---------*/
 
-
-/*----------Section---------*/
-
-/* page Login Admin */
-
-#login_admin {
-    width: fit-content;
-    text-align: center;
-    box-shadow: 0px 0px 4px;
-    margin: auto;
-    margin-top: 7%;
-}
-
-#login_admin h1 {
-    margin: auto;
-    padding: 11px 12px;
-    background: white;
-    border-radius: 3px 2px;
-    border-radius: 9px 9px 0px 0px;
-    border: 3px solid white;
-}
-
-#login_admin form {
-    margin: auto;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0px 0px 9px 9px;
-    padding: 34px;
-    border: 3px solid white;
-    background-color: #185d8b;
-}
-
-#login_admin label {
-    width: 113px;
-    margin-right: 10px;
-
-}
-
-.block_mail {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-}
-
-.block_pass {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-    justify-content: space-evenly;
-}
-
-#login_admin button {
-    width: 115px;
-    margin-left: 40%;
-    border-radius: 3px;
-    font-size: 13px;
-    padding: 5px;
-    margin-top: 25px;
-}
-
-#msg_mail {
-    display: none;
-
-}
-
-#msg_pass {
-    display: none;
-}
-
-.input {
-    display: flex;
-}
-
-/*  */
-
-#title_book {
+#title_book_admin {
+    background: rgb(242, 242, 242);
     font-family: 'IM Fell Great Primer SC', serif;
     text-align: center;
     margin-bottom: 0px;
@@ -612,8 +584,9 @@ footer p {
 }
 
 #chapters_list {
+    background: rgb(242, 242, 242);
     column-count: 2;
-    padding: 6% 10%;
+    padding: 6% 6%;
     margin: auto;
 }
 
@@ -637,27 +610,42 @@ footer p {
     margin-right: 20px;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .title_post a {
     color: black;
-    text-decoration: underline;
-    font-size: 20px;
-    text-underline-position: under;
+    background: #c1b8bb;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 31px;
     margin-left: 20px;
-    width: 135px;
+    width: 221px;
+    font-weight: 900;
 }
 
 .title_post p {
     margin: auto;
-    width: 76px;
+    width: 80px;
+    font-size: 12px;
     border-radius: 10px;
     text-align: center;
 }
 
 .btn_modify {
     margin-right: 30px;
-
+} 
+.btn_modify a{
+    background: inherit;
+}
+.btn_modify button{
+    background: white;
+    color: black;
+    font-weight: 400;
+    box-shadow: 0px 0px 2px #1a52762b;
+    border-radius: 3px;
 }
 
 #write_post {
@@ -805,8 +793,9 @@ footer p {
 
 }
 
-/* ---------------- postAdmin ------------------- */
-.block_title {
+/* ---------------- postAdmin --------------- */
+
+.block_title_post {
     display: flex;
     border-bottom: 2px solid black;
     align-items: center;
@@ -815,7 +804,7 @@ footer p {
     padding-bottom: 7px;
 }
 
-.block_title label {
+.block_title_post label {
     font-size: 25px;
     width: 100px;
     color: white;
@@ -824,7 +813,7 @@ footer p {
     background-color: #185d8b;
 }
 
-.block_title input {
+.block_title_post input {
     padding: 7px;
     background-color: #1a52760a;
     font-size: 20px;
@@ -914,8 +903,6 @@ footer p {
     margin-left: 19%;
     margin-top: 10%;
     height: fit-content;
-    background: #1a5276;
-    border-radius: 3px;
 
 }
 
@@ -938,6 +925,8 @@ footer p {
     padding: 5px 6px;
     color: white;
     font-weight: 600;
+    background: #1a5276;
+    border-radius: 3px;
 }
 
 #block_set_infos {
@@ -966,9 +955,11 @@ footer p {
 
 .label_form {
     width: 133px;
+    font-family: 'IM Fell Great Primer SC', serif;
 }
 
 #btn_infosP {
+    background: white;
     padding: 5px 8px;
     width: -webkit-fill-available;
     margin-top: 24px;
@@ -1037,9 +1028,11 @@ footer p {
 
 .set_password .label_form {
     width: 219px;
+    font-family: 'IM Fell Great Primer SC', serif;
 }
 
 #btn_password {
+    background: white;
     padding: 5px 8px;
     width: -webkit-fill-available;
     margin-top: 24px;

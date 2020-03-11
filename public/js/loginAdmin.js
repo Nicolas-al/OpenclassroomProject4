@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-
    if ($('#msg_mail').html() != "") {
       $('#msg_mail').show();
       $("#mail").focusin(function () {

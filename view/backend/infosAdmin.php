@@ -57,15 +57,15 @@ $adminName = ob_get_clean();
             <div class="set_password" id="set_password">
                 <h2> Modifier mot de passe</h2>
                 <div class="form_group">
-                    <label for="current_password" class="label_form">Mot de passe actuel</label><br />  
+                    <label for="current_password" class="label_form">Mot de passe actuel :</label><br />  
                     <input type="password" name="current_password" id="current_password" required /><br />    
                 </div>   
                 <div class="form_group">
-                    <label for="new_password" class="label_form">Nouveau mot de passe</label><br />  
+                    <label for="new_password" class="label_form">Nouveau mot de passe :</label><br />  
                     <input type="password" name="new_password" id="new_password" required /><br />
                 </div>
                 <div class="form_group">
-                    <label for="confirm_password" class="label_form"> Condirmez votre mot de passe</label><br />
+                    <label for="confirm_password" class="label_form"> Confirmez votre mot de passe :</label><br />
                     <input type="password" name="confirm_password" id="confirm_password" required /><br />
                 </div>
                 <button id="btn_password">Valider</button>

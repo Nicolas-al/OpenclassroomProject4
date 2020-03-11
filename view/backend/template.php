@@ -2,14 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <title>Jean Rochefort</title>
         <link type="text/css" rel="stylesheet" href="public/css/style.css" />
         <link type="text/css" rel="stylesheet" href="public/css/responsive.css" />
         <link type="text/css" rel="stylesheet" href="public/css/content.css" />
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Libre+Baskerville|Lobster&display=swap" rel="stylesheet">
+
         <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">
-        <script src="https://cdn.tiny.cloud/1/cjks5lxllr4iyto9t16e6ilcfslvsldajn4jvsqk17g73cwx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/jor5gzce56og2y1p3i8nd1rwjlw54zr2hlwjk7xpkuowlax0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://kit.fontawesome.com/f609b4f9a4.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="public/js/deleteCom.js"></script>
@@ -52,9 +54,8 @@
         </div>
         
     </header>
-    <hr>
     <section>
-    <h1 id="title_book">Billet simple pour l'Alaska</h1>
+    <h1 id="title_book_admin">Billet simple pour l'Alaska</h1>
     
         <?= $content ?>
         
@@ -69,7 +70,6 @@
         height: 600,
         valid_elements : "em/i,strike,u,strong/b,div[align],br,p[align],-ol[type|compact],-ul[type|compact],-li",
         entity_encoding : "raw",
-        // content_style : 'body { border : 2px solid blue; margin-top : 20px;}'
         body_id : 'tiny_text_area',
         plugins: [ 'code', 'lists' ],
         mobile: {

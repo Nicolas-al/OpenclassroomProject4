@@ -17,7 +17,7 @@ $adminName = ob_get_clean();
 <hr>
 <section id="write_post">
     <form method="post" action="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=true';} else{ echo 'savePost&id=' . $_GET['id'] . '&posted=true';} ?>">
-        <div class="block_title">
+        <div class="block_title_post">
             <label for="title"> Titre :</label><br />
             <input type="text" name="title" id="title" placeholder="écrivez un titre" value="<?php if (isset($post['title'])){ echo $post['title']; } else { echo "";} ?>"/><br />
         </div>
@@ -30,10 +30,6 @@ $adminName = ob_get_clean();
             <input type="submit"  formaction="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=false';} else{echo 'savePost&id=' . $_GET['id'] . '&posted=' . $post['posted'];} ?>" value="enregistrer"/>
             <input type="submit" formaction="index.php?action=savePost&id=<?= $_GET['id'] ?>&posted=false" value="dépublier"/>
             <input type="submit" name="add_post"  id="add_post" value="publier"/>
-
-            <!-- <div id="delete_post">
-                <a href="index.php?action=deletePost&id=<?= $post['id']?>"><span>supprimer</span></a>
-            </div> -->
         </div> 
     </form>
    

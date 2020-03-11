@@ -69,8 +69,37 @@
     .title_chapter h1{
         font-size: 0.9em;
     }
+
+    /* title book */
+    .block_title{
+        width: 70%;
+    }
+    #title_book {
+        font-size: 1.2em;
+        align-items: center;
+        padding: 0;
+    }
+
+    .icon_iceberg img{
+        height: 61px;
+    }
+    .block_infos{
+        width: 70%;
+        padding: 0;
+        margin: auto;
+    }
+    .block_infos h1{
+        font-size: 1.2em;
+        margin-top: 16%;
+    }
+    .infos_mdp {
+        margin-top: 0;
+    }
     /*------- postView -------*/
 
+    #block_chapter {
+        padding: 8% 10% 7% 10%;
+    }
     #form_section p {
         font-size: 1.4em;
         padding: 3%;
@@ -112,27 +141,31 @@
     /* homeAdmin */
     #chapters_list {
         column-count: 1;
+        padding: 6% 4%;
     }
     .block_chapter{
         text-align: center;
     }
     .title_post{
         margin: auto;
+        width: 100%;
     }
     .title_post p {
         margin: auto;
         width: 76px;
         border-radius: 10px;
         text-align: center;
-        font-size: 12px;
+        color: white;
+        font-size: 11px;
     }
     .title_post a {
-        font-size: 13px;
-        width: 55%;
+        font-size: 20px;
+        width: 57%;
         margin-left: 5px;
     }
     .btn_modify {
         margin-right: 0px;
+        font-size: 11px;
     }
 
     .block_comment{
@@ -171,6 +204,22 @@
     #delete_post{
         margin-top: 10%;
     }
+    .block_title_post{
+        width: 100%;
+    }
+    .block_title_post label{
+        font-size: 17px;
+        padding: 3px;
+    }
+    .block_title_post input{
+        font-size: 17px;
+        padding: 3px;
+    }
+    .block_content label{
+    margin-top: 9%;
+    }
+
+
     /* infosAdmin */
     .set_password{
         padding: 0px 5px 5px 5px;
@@ -184,6 +233,51 @@
     .infos a{
         margin-left: 0;
         width: fit-content;
+    }
+    #block_set_infos{
+        width: 70%;
+    }
+    .set_infos{
+        padding: 10px 11px;
+    }
+    .set_infos h2{
+        font-size: 1.1em;
+        text-align: center;
+        margin-top: 0;
+    }
+    .set_infos .form_group{
+        flex-direction: column;
+        height: 50px
+    }
+    .set_password h2{
+        font-size: 1.1em;
+        text-align: center;
+    }
+    .set_password .form_group{
+        flex-direction: column;
+        height: 50px;
+        margin: auto;
+        width: 80%;
+    }
+    .form_group label{
+        margin-bottom: 3%;
+        font-size: 0.9em;
+    }
+    .form_group br{
+        display: none;
+    }
+    .form_group input{
+        width: 100%;
+    }
+    #btn_infosP{
+    font-size: 0.9em;
+    margin-left: 9%;
+    width: 84%;
+    }
+    #btn_password{
+    font-size: 0.9em;
+    margin-left: 9%;
+    width: 84%;
     }
 }
 @media all and (min-width: 515px) and (max-width: 810px){
@@ -258,8 +352,8 @@
     .title_post a{
         font-size: 13px;
         margin-left: 0;
-        width: 55%;
-        margin-left: 5px;
+        width: 82px;
+        margin-left: 7px;
     }
     .btn_modify {
         margin-right: 0px; 
@@ -273,8 +367,10 @@
     .title_chapter h1{
         font-size: 1.3em;
     }
+    .title_post a{
+        font-size: 20px;
+        width: 49%;
+    }
   } 
-@media screen and (min-width: 514px){
 
-}
   
