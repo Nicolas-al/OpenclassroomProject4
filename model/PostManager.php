@@ -1,6 +1,5 @@
 <?php
-
-require_once('manager.php');
+require_once('Manager.php');
 
 class PostManager extends Manager
 {
@@ -22,32 +21,20 @@ class PostManager extends Manager
     public function update($title, $content, $id)
     {
        $db = $this->dbConnect(); 
-       var_dump("jesus");
 
        if (!empty($_GET['action']) && $_GET['action'] == "savePost"){
-         var_dump("jesus");
 
          if (!empty($_GET['posted']) && $_GET['posted'] == 1){
-            var_dump("jesus");
             $q = $db->prepare('UPDATE chapters SET title = ?, content = ?, post_date = NOW(), posted = true WHERE id = ?');
             $updateLines = $q->execute(array($title, $content, $id));
          }
          else if(!empty($_GET['posted']) && $_GET['posted'] == 0){
-            var_dump("jesus");
             $q = $db->prepare('UPDATE chapters SET title = ?, content = ?, post_date = NOW(), posted = false WHERE id = ?');
             $updateLines = $q->execute(array($title, $content, $id));
          }
        }
       return $updateLines;
     }
-   //  public function updateTwo($title, $content, $id)
-   //  {
-   //     $db = $this->dbConnect(); 
-   //     $q = $db->prepare('UPDATE chapters SET title = ?, content = ?, post_date = NOW(), posted = false WHERE id = ?');
-   //     $updateLines = $q->execute(array($title, $content, $id));
-
-   //     return $updateLines;
-   //  }
     public function getListFront()
      {
         $db = $this->dbConnect(); 

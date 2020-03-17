@@ -6,14 +6,13 @@ class Manager
     {
         try 
         {
-        $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', 'root');
-        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
+            $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', 'root');
+            $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         return $db;
         }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        catch(PDOException $e) {
+            echo "Erreur!: " . $e->getMessage() . "<br/>";
+            die();
+          }
     }
 }

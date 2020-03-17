@@ -8,6 +8,7 @@ $(document).ready(function () {
                 'color': '#fea'
             });
         } else {
+            console.log('zut');
             $(paraTitlePost[i]).css({
                 'background': '#b10606',
                 'color': 'white'

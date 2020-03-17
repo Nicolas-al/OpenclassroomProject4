@@ -86,6 +86,9 @@ class Route
                     echo 'introuvable';
                 }
             }
+            else{
+                header('location: index.php?action=accueil');
+            }
         }
         catch(Exception $e)
         {

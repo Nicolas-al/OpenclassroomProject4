@@ -16,7 +16,7 @@ $adminName = ob_get_clean();
 <?php  ob_start(); ?>
 <hr>
 <section id="write_post">
-    <form method="post" action="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=true';} else{ echo 'savePost&id=' . $_GET['id'] . '&posted=true';} ?>">
+    <form method="post" action="index.php?action=<?php if (!isset($_GET['id'])){ echo 'addPost&posted=true';} else{ echo 'savePost&id=' . $_GET['id'] . '&posted=1';} ?>">
         <div class="block_title_post">
             <label for="title"> Titre :</label><br />
             <input type="text" name="title" id="title" placeholder="écrivez un titre" value="<?php if (isset($post['title'])){ echo $post['title']; } else { echo "";} ?>"/><br />

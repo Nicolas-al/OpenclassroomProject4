@@ -12,7 +12,6 @@
         <script src="https://cdn.tiny.cloud/1/cjks5lxllr4iyto9t16e6ilcfslvsldajn4jvsqk17g73cwx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://kit.fontawesome.com/f609b4f9a4.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="public/js/zoom.js"></script>
         <script src="public/js/loginAdmin.js"></script>
 
 

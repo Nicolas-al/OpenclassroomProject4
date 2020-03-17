@@ -24,7 +24,7 @@
     <header id="header_back">
         <div class="header_left">
             <div id="pseudo">
-                <h3><? $adminName ?></h3>
+                <h3><?php if(isset($_GET['action']) && $_GET['action'] === 'homeAdmin'){ echo 'Bienvenue ';}?><?= $adminName ?></h3>
             </div>
             <?php if (isset($_GET['action']) && $_GET['action'] != 'homeAdmin')
             {

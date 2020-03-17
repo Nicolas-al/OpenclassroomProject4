@@ -1,7 +1,5 @@
 <?php 
-  
-
-require_once('manager.php');
+require_once('Manager.php');
 
 class CommentManager extends Manager
 {
@@ -37,7 +35,6 @@ class CommentManager extends Manager
      public function delete($id)
      {
       $db = $this->dbConnect(); 
-      var_dump('salut');
 
       $q = $db->prepare('DELETE comments, reporting FROM comments INNER JOIN reporting ON comments.id = reporting.comment_id WHERE comments.id = ?');
       $deletedLines = $q->execute(array($id));

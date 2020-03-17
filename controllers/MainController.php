@@ -38,22 +38,19 @@ class MainController {
         $commentManager = new CommentManager();
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (isset($_POST['form-pseudo']) && $_POST['form-pseudo'] != "Admin" && isset($_POST['form-comment'])) {
-                var_dump('salut');
-                $newComment = $commentManager->add($_GET['id'], $_POST['form-pseudo'], $_POST['form-comment']);
+                $newComment = $commentManager->add($_GET['id'], htmlspecialchars($_POST['form-pseudo']), htmlspecialchars($_POST['form-comment']));
                 if ($newComment === false) {
                     throw new Exception('Impossible de s\'inscrire !');
                 } else {
-                    header('Location: index.php?action=postView&id='.$_GET['id'].
-                        '&titlepost='.$_GET['titlepost']);
+                    header('Location: index.php?action=postView&id=' . $_GET['id']. '&titlepost=' . $_GET['titlepost']);
                 }
             }
             elseif(isset($_POST['form-pseudo']) && $_POST['form-pseudo'] == "Admin" && isset($_POST['form-comment'])) {
-                var_dump('salut');
-                $newComment = $commentManager->add($_GET['id'], $_POST['form-pseudo'], $_POST['form-comment']);
+                $newComment = $commentManager->add($_GET['id'], htmlspecialchars($_POST['form-pseudo']), htmlspecialchars($_POST['form-comment']));
                 if ($newComment === false) {
                     throw new Exception('Impossible de s\'inscrire !');
                 } else {
-                    header('Location: index.php?action=postAdminView&id='.$_GET['id']);
+                    header('Location: index.php?action=postAdminView&id=' . $_GET['id']);
                 }
 
             }
@@ -66,7 +63,6 @@ class MainController {
         $reportingManager = new ReportingManager();
         $commentManager = new CommentManager();
         $reports = $_GET['nbreports'];
-        var_dump('salut');
 
         if (!empty($_GET['commentid'])) {
             $id = intval($_GET['commentid']);
@@ -77,12 +73,10 @@ class MainController {
                 if ($newReport === false && $updateNbReports == false) {
                     throw new Exception('Impossible de signaler le commentaire !');
                 } else {
-                    header('Location: index.php?action=postView&id='.$_GET['postid'].
-                        '&titlepost='.$_GET['titlepost']);
+                    header('Location: index.php?action=postView&id='. $_GET['postid'] . '&titlepost=' . $_GET['titlepost']);
                 }
             }
         } else {
-            var_dump('salut');
         }
     }
     public function getComments() {

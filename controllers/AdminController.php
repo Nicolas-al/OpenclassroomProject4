@@ -38,7 +38,6 @@ class AdminController {
                     } else {
                         $_SESSION['erreurpass'] = "mot de passe incorrect";
                         header('Location: index.php?action=loginAdmin');
-                        var_dump($_POST['password']);
                     }
                 } else if (!password_verify($_POST['password'], $dataAdmin['password'])) {
                     $_SESSION['erreurmail'] = "email non valide";
@@ -58,21 +57,22 @@ class AdminController {
     }
 
     public function homeAdmin() {
+
         if (!isset($_SESSION['role'])) {
             header('Location: index.php?action=loginAdmin');
         };
         $postManager = New PostManager();
         $adminManager = New AdminManager();
         $reportingManager = new ReportingManager();
-        $commentManager = new CommentManager();
-        $reports = $reportingManager->get();
+        $commentManager = new CommentManager();    
         $getPosts = $postManager->getListBack();
         $getData = $adminManager->getData();
-
+        $reports = $reportingManager->get();
         if (!empty($_GET['id'])) {
             $id = intval($_GET['id']);
             if ($_GET['id'] != NULL) {
                 $getAdmin = $adminManager->getAdmin($_GET['id']);
+
             }
         }
         require 'view/backend/homeAdmin.php';
@@ -117,18 +117,20 @@ class AdminController {
         $getData = $adminManager->getData();
         $dataAdmin = $getData->fetch();
         if (isset($_POST['title']) && isset($_POST['tiny_text_area'])) {
-            $postManager->add($_POST['title'], htmlspecialchars_decode($_POST['tiny_text_area']));
+            $postManager->add(htmlspecialchars($_POST['title']), htmlspecialchars_decode($_POST['tiny_text_area']));
         }
         header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
     }
     public function savePost() {
         $postManager = New PostManager();
+        $adminManager = New AdminManager();
         $post = $postManager->getPost($_GET['id']);
+        $getData = $adminManager->getData();
+        $dataAdmin = $getData->fetch();
         if (isset($_POST['title']) && isset($_POST['tiny_text_area']) && isset($_GET['id']) && isset($_GET['posted'])) {
             $postManager->update($_POST['title'], $_POST['tiny_text_area'], $_GET['id']);
         }
-        header('Location: index.php?action=postAdmin&id='.$_GET['id'].
-            '&posted='.$_GET['posted']);
+        header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
     }
 
     public function deleteComment() {
