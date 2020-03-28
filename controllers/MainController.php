@@ -1,8 +1,6 @@
-<?php
-
-require_once('model/CommentManager.php');
-require_once('model/PostManager.php');
-require_once('model/ReportingManager.php');
+<?php require_once('model/CommentManager.php');
+    require_once('model/PostManager.php');
+    require_once('model/ReportingManager.php');
 
 
 class MainController {
@@ -42,42 +40,53 @@ class MainController {
                 if ($newComment === false) {
                     throw new Exception('Impossible de s\'inscrire !');
                 } else {
-                    header('Location: index.php?action=postView&id=' . $_GET['id']. '&titlepost=' . $_GET['titlepost']);
+                    header('Location: index.php?action=postView&id='. $_GET['id'] . '&titlepost=' . $_GET['titlepost']);
                 }
             }
             elseif(isset($_POST['form-pseudo']) && $_POST['form-pseudo'] == "Admin" && isset($_POST['form-comment'])) {
                 $newComment = $commentManager->add($_GET['id'], htmlspecialchars($_POST['form-pseudo']), htmlspecialchars($_POST['form-comment']));
                 if ($newComment === false) {
                     throw new Exception('Impossible de s\'inscrire !');
-                } else {
-                    header('Location: index.php?action=postAdminView&id=' . $_GET['id']);
+                } else {    
+                header('Location: index.php?action=postAdminView&id='. $_GET['id'] . '&titlepost=' . $_GET['titlepost']);
                 }
-
-            }
-            else {
-                echo 'erreur';
             }
         }
     }
     public function addReport() {
         $reportingManager = new ReportingManager();
         $commentManager = new CommentManager();
+        $postManager = new PostManager();
+        $postId = $postManager->getPost($_GET['postid']);
+        $commentId = $commentManager->get($_GET['commentid']);
         $reports = $_GET['nbreports'];
-
+        var_dump($commentId);
+  
         if (!empty($_GET['commentid'])) {
             $id = intval($_GET['commentid']);
             if ($_GET['commentid'] != NULL) {
+                if (!empty($_GET['action']) && $_GET['action'] == 'report'){ 
                 $reports++;
-                $newReport = $reportingManager->add($_GET['postid'], $_GET['commentid'], $_GET['authorname'], $_GET['titlepost']);
+                $newReport = $reportingManager->add($postId['id'], $commentId['id'], htmlspecialchars($commentId['author']), $postId['title']);
                 $updateNbReports = $commentManager->update($reports, $_GET['commentid']);
-                if ($newReport === false && $updateNbReports == false) {
-                    throw new Exception('Impossible de signaler le commentaire !');
-                } else {
-                    header('Location: index.php?action=postView&id='. $_GET['postid'] . '&titlepost=' . $_GET['titlepost']);
+                    if ($newReport === false && $updateNbReports == false) { 
+                        throw new Exception('Impossible de signaler le commentaire !');
+                    } else { 
+                        header('Location: index.php?action=postView&id='. $_GET['postid']);
+                    }
+                }
+                elseif (!empty($_GET['action']) && $_GET['action'] == 'reportAdmin') {
+                    $reports++;
+                    $newReport = $reportingManager->add($postId['id'], $_GET['commentid'], 'Admin', $postId['title']);
+                    $updateNbReports = $commentManager->update($reports, $_GET['commentid']);
+                        if ($newReport === false && $updateNbReports == false) {
+                            throw new Exception('Impossible de signaler le commentaire !');
+                        } else { 
+                            header('Location: index.php?action=postAdminView&id='. $_GET['postid']);
+                        }
                 }
             }
-        } else {
-        }
+        } 
     }
     public function getComments() {
         require 'view/frontend/postView.php';

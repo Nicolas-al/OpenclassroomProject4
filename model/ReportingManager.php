@@ -8,9 +8,7 @@ class ReportingManager extends Manager
     {
         $db = $this->dbConnect();
         $q = $db->prepare('INSERT INTO reporting(post_id, comment_id, pseudo_id, chapter, report_date) VALUES(?, ?, ?, ?, NOW())');
-
         $affectedLines = $q->execute(array($postId, $commentId, $pseudoId, $chapter));
-
         return $affectedLines;
     }
     public function get()
@@ -24,8 +22,9 @@ class ReportingManager extends Manager
     public function delete($commentId)
     {
         $db = $this->dbConnect();
-        $q = $db->query('DELETE * FROM reporting WHERE comment_id = ?');
-
+        var_dump('salut');
+        $q = $db->prepare('DELETE  FROM reporting WHERE comment_id = ?');
+        var_dump('salut');
         $deleteLines = $q->execute(array($commentId));
 
         return $deleteLines;

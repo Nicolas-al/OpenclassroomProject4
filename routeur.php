@@ -66,13 +66,21 @@ class Route
                         $page = new MainController();
                         $page->addReport();                                           
                     break;
+                    case 'reportAdmin':
+                        $page = new MainController();
+                        $page->addReport(); 
+                    break;  
                     case 'deleteComment':
                         $adCtrl = new AdminController();
                         $adCtrl->deleteComment();
                     break;
                     case 'deletePost':
                         $adCtrl = new AdminController();
-                        $adCtrl->deletePost($_GET['id']);
+                        $adCtrl->deletePost();
+                    break;
+                    case 'deleteReport':
+                        $adCtrl = new AdminController();
+                        $adCtrl->deleteReport();
                     break;
                     case 'infosAdmin':
                         $adCtrl = new AdminController();

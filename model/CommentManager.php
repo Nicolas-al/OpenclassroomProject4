@@ -5,7 +5,6 @@ class CommentManager extends Manager
 {
      public function add($postId, $author, $comment)
      {
-  
         $db = $this->dbConnect(); 
         $q = $db->prepare('INSERT INTO comments(post_id, author, comment,
         comment_date, nb_reports) VALUES( ?, ?, ?, NOW(), 0)');
@@ -13,15 +12,28 @@ class CommentManager extends Manager
 
         return $affectedLines;
      }
-     public function get($postId)
+     public function get($Id)
      {
         $db = $this->dbConnect(); 
-        $q = $db->prepare('SELECT *, DATE_FORMAT(comment_date, "%d/%m/%Y %H:%i:%s") AS date_c FROM comments WHERE post_id = ? ORDER BY id DESC');
-        $q->execute(array($postId));
+        if (!empty($_GET['action'])){
+           if($_GET['action'] == 'postView' || $_GET['action'] == 'postAdminView'){ 
+           
+            $q = $db->prepare('SELECT *, DATE_FORMAT(comment_date, "%d/%m/%Y %H:%i:%s") AS date_c FROM comments WHERE post_id = ? ORDER BY id DESC');
+            $q->execute(array($Id));
+            
+            $comments = $q->fetchAll();
+            }
+            elseif(!empty($_GET['action']) && $_GET['action'] == 'report'){
+            
+            $q = $db->prepare('SELECT *, DATE_FORMAT(comment_date, "%d/%m/%Y %H:%i:%s") AS date_c FROM comments WHERE id = ?');
+            $q->execute(array($Id));
 
-        
-        $comments = $q->fetchAll();
+            $comments = $q->fetch();
+            
+            }     
 
+        }
+                 
         return $comments;
       }
      public function update($nbReports, $id)

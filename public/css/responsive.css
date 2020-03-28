@@ -6,9 +6,6 @@
         display: flex;
         flex-direction: column-reverse;
     }
-    .home_return{
-        top: 0;
-    }
     #author_name{
         margin-left: auto;
         margin-right: auto;
@@ -138,6 +135,18 @@
         position: absolute;
         right: 0;
     }
+    #pseudo {
+        width: 194px;
+        width: 122px;
+        padding-left: 10px;
+        position: absolute;
+        font-size: 11px;
+        top: 0;
+    }
+    .block_create_post {
+        margin-bottom: 14px;
+        margin-left: 20px;
+    }
     /* homeAdmin */
     #chapters_list {
         column-count: 1;
@@ -222,7 +231,7 @@
 
     /* infosAdmin */
     .set_password{
-        padding: 0px 5px 5px 5px;
+        padding: 0px 5px 15px 5px;
     }
     .infos{
         flex-direction: column;
@@ -236,9 +245,6 @@
     }
     #block_set_infos{
         width: 70%;
-    }
-    .set_infos{
-        padding: 10px 11px;
     }
     .set_infos h2{
         font-size: 1.1em;
@@ -341,6 +347,18 @@
     /* ------------------- BACKEND --------------------- */
 
     /* homeAdmin */
+
+    #pseudo {
+        width: 122px;
+        padding-left: 10px;
+        position: absolute;
+        font-size: 11px;
+        top: 0;
+    }
+    .block_create_post {
+        margin-left: 122px;
+    }
+
     .block_chapter {
         padding: 5px 0px;
     }
@@ -365,6 +383,7 @@
         margin-right: 0px; 
     }
     /* infosAdmin */
+
     .infos a{
         margin-left: 0;
     }

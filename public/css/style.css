@@ -448,7 +448,9 @@ footer p {
 /*----------header----------*/
 
 #pseudo {
-    width: 194px;
+    width: 154px;
+    font-size: 12px;
+    position: absolute;
 }
 
 #pseudo h3 {
@@ -464,6 +466,7 @@ footer p {
 .block_create_post {
     display: flex;
     flex-direction: column;
+    margin-left: 139px;
     align-items: center;
     width: 100%;
     padding-top: 2%;
@@ -580,7 +583,7 @@ footer p {
 #chapters_list {
     background: rgb(242, 242, 242);
     column-count: 2;
-    padding: 4% 0% 6% 13%;
+    padding: 4% 0% 6% 5%;
     margin: auto;
 }
 
@@ -624,6 +627,7 @@ footer p {
 .title_post p {
     width: 91px;
     font-size: 12px;
+    height: 16px;
     border-radius: 10px;
     text-align: center;
 }
@@ -682,11 +686,23 @@ footer p {
     width: 90%;
     margin: auto;
 }
-
+.width_block{ 
+width: inherit;
+}
+#block_moderate {
+    margin-inline-start: auto;
+    width: fit-content;
+}
+#block_moderate p{
+color: #908e8ed1;
+    font-size: 1.1em;
+    margin: auto;
+    cursor: pointer;
+}
 .comment {
     width: 100%;
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 3px;
@@ -723,19 +739,9 @@ footer p {
     background-color: #ffffffb8;
     border-radius: 0px 0px 3px 3px;
 }
-
-
-
 .icon_delete {
-    margin-left: 28px;
-    display: -webkit-box;
-    display: flex;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
+    margin : auto;
     height: fit-content;
-}
-
-.icon_delete {
     display: block;
 }
 

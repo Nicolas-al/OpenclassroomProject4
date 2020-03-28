@@ -32,7 +32,10 @@ $adminName = ob_get_clean();
         {
         ?>
         <div class="block_comment" id="<?= $report['comment_id']?>">
-            
+            <div class="width_block">
+                <div onclick="moderate(<?=$report['comment_id']?>)" id="block_moderate">
+                    <p> Modérer le signalement </p>
+                </div>
                 <div class="comment">
                     <div class="r_infos">
                         <p class="chapter_comment"><?= $report['chapter']?></p>
@@ -42,15 +45,15 @@ $adminName = ob_get_clean();
                     <div class="r_content">    
                         <p> <?= $report['comment']?></p>
                     </div>
-                </div> 
-                <div class="icon_delete">
-                    <div onclick="deleteCom(<?=$report['comment_id']?>)" id="block_delete">
-                        <img src="public/logos/icons8-delete-bin-48.png" alt="poubelle rouge"/><span>Supprimer</span>
-                    </div>
                 </div>
-                <div>
-                    <a href=""></a>
-                </div>      
+            </div>     
+            <div class="icon_delete">
+                <div onclick="deleteCom(<?=$report['comment_id']?>)" id="block_delete">
+                    <img src="public/logos/icons8-delete-bin-48.png" alt="poubelle rouge"/><span>Supprimer</span>
+                </div>
+            </div>
+                    
+                     
         </div>
         <?php     
         }

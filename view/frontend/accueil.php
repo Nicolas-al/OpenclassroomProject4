@@ -30,17 +30,17 @@
     <div class="chapter">
         <div class="block_title_chapter">
             <div class="title_chapter">
-                <h1><?= $data['title']; ?> </h1>
+                <h1><?= htmlspecialchars($data['title']); ?> </h1>
             </div>
             <div class="post_date">
                 <p> Posté le <?= $data['date_p']; ?></p>
             </div>
             <div class="post_link">
-                <a href="index.php?action=postView&amp;id=<?= $data['id'] ?>&titlepost=<?= $data['title'] ?>"> voir la suite </a>
+                <a href="index.php?action=postView&amp;id=<?= $data['id'] ?>"> voir la suite </a>
             </div>    
         </div>
         <div class="content">
-            <p><?= $data['content']?> </p>
+            <p><?= htmlspecialchars($data['content']);?> </p>
         </div>
     
     </div>

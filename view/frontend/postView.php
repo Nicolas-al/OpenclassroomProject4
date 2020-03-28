@@ -18,13 +18,11 @@
 
     <div id="post_block">
         <div>
-            <h1 class="title_chapter"><?= $post['title'] ?> </h1>
-            <p class="content"><?= $post['content']?></p>
+            <h1 class="title_chapter"><?= htmlspecialchars($post['title']) ?> </h1>
+            <p class="content"><?= htmlspecialchars($post['content'])?></p>
         </div>
     </div>
 </section>
-
-
 
 <section id="form_section">
     <p> Laisser un commentaire : </p>
@@ -65,7 +63,7 @@
                 </div>
             </div>    
             <div class="report">
-                <a href="index.php?action=report&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>&authorname=<?= $comment['author']?>&titlepost=<?= $_GET['titlepost']?>"><button
+                <a href="index.php?action=report&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>"><button
                     type="button" id="btn_report">! signaler</button></a>
             </div>
         </div>

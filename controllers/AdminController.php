@@ -117,7 +117,7 @@ class AdminController {
         $getData = $adminManager->getData();
         $dataAdmin = $getData->fetch();
         if (isset($_POST['title']) && isset($_POST['tiny_text_area'])) {
-            $postManager->add(htmlspecialchars($_POST['title']), htmlspecialchars_decode($_POST['tiny_text_area']));
+            $postManager->add(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['tiny_text_area']));
         }
         header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
     }
@@ -128,7 +128,7 @@ class AdminController {
         $getData = $adminManager->getData();
         $dataAdmin = $getData->fetch();
         if (isset($_POST['title']) && isset($_POST['tiny_text_area']) && isset($_GET['id']) && isset($_GET['posted'])) {
-            $postManager->update($_POST['title'], $_POST['tiny_text_area'], $_GET['id']);
+            $postManager->update(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['tiny_text_area']), $_GET['id']);
         }
         header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
     }
@@ -148,15 +148,13 @@ class AdminController {
             };
         }
     }
-    public function deletePost($id) {
+    public function deletePost() {
         $postManager = New PostManager();
         $adminManager = New AdminManager();
-
-        if (!empty($id)) {
-
-            $id = intval($id);
+        if (!empty($_GET['id'])) {
+           $id = intval($_GET['id']);
             if ($id != NULL) {
-                $postManager->delete($id);
+                $postManager->delete($_GET['id']);
                 $getData = $adminManager->getData();
                 while ($dataAdmin = $getData->fetch()) {
                     header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
@@ -165,6 +163,22 @@ class AdminController {
                 header('Location: index.php');
             }
         }
+    }
+    public function deleteReport() {
+        $reportingManager = new ReportingManager();
+        $adminManager = New AdminManager();
+        if (!empty($_GET['commentid'])){
+                if ($_GET['commentid'] != NULL){
+                $reportingManager->delete($_GET['commentid']);
+                $getData = $adminManager->getData();
+                while ($dataAdmin = $getData->fetch()) {
+                    header('Location: index.php?action=homeAdmin&id='.$dataAdmin['id']);
+                }       
+            }
+        }
+        else {
+            header('Location: index.php');
+        };
     }
     public function displayInfos() {
         $adminManager = New AdminManager();

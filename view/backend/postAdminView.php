@@ -15,12 +15,12 @@ $adminName = ob_get_clean();
 <?php  ob_start(); ?>
 <section>
 <div id="post_block">
-    <h1><?= $post['title'] ?> 
+    <h1><?= htmlspecialchars($post['title'])?> 
     </h1>
-    <?= $post['content']?>    
+    <?= htmlspecialchars($post['content'])?>    
 </div>
 <div id="form_block">
-    <form action="index.php?action=addComment&amp;id=<?= $post['id'];?>" method="POST"> 
+    <form action="index.php?action=addComment&amp;id=<?= $_GET['id'];?>&titlepost=<?= $_GET['titlepost']?>" method="POST"> 
         <div class="form-group">
             <label for="form-pseudo" class="text-white">Votre pseudo <span>(en moins de 255 caractères)</span></label>
             <input type="text" class="form-control" name="form-pseudo" id="form-pseudo" value="Admin" readonly>
@@ -51,7 +51,7 @@ $adminName = ob_get_clean();
             </div>    
             <div class="report">
                 <a
-                    href="index.php?action=report&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>&authorname=<?= $comment['author']?>"><button
+                    href="index.php?action=reportAdmin&postid=<?= $_GET['id'] ?>&commentid=<?= $comment['id']; ?>&nbreports=<?= $comment['nb_reports']?>"><button
                     type="button" id="btn_report">! signaler</button></a>
             </div>
         </div>
@@ -65,8 +65,7 @@ $adminName = ob_get_clean();
 <aside>
 <div>   
     
-<?php
-
-$content = ob_get_clean();
+<?php $content = ob_get_clean();
 
 require('view/backend/template.php');
+?>

@@ -19,6 +19,7 @@
         <script src="public/js/header.js"></script>
         <script src="public/js/setAdmin.js"></script>
         <script src="public/js/homeAdmin.js"></script>
+        <script src="public/js/moderate.js"></script>
     </head>
     <body>
     <header id="header_back">
@@ -78,7 +79,7 @@
         toolbar: [ 'undo', 'bold', 'italic', 'styleselect' ]
         },
         plugins : "importcss" ,
-        content_css : 'public/css/content.css'
+        content_css : 'public/css/content.css',
       })
     </script>
 
